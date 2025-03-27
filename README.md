@@ -1,3 +1,0 @@
-<<<<<<< HEAD
-# chatbot
-Frontend Chatbot
