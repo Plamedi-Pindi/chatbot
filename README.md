@@ -18,3 +18,5 @@ Este é o frontend de um chatbot desenvolvido com React.js, Vite, Tailwind CSS e
     ```sh
       git clone https://github.com/seu-usuario/seu-repositorio.git
       cd seu-repositorio
+
+  
