@@ -69,6 +69,17 @@ Este é o frontend de um chatbot desenvolvido com React.js, Vite, Tailwind CSS e
 
 5. **Abra um Pull Request**
 
+## Variáveis de ambiente: Como usar nos componentes
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const appName = import.meta.env.VITE_APP_NAME;
+    const enableLogs = import.meta.env.VITE_ENABLE_LOGS === "true";
+
+    console.log(`App: ${appName}, API: ${apiUrl}`);
+
+    if (enableLogs) {
+        console.log("Logs ativados para debug.");
+    }
+
 ## Licença
 
 Este projeto está sob a licença MIT - veja o arquivo [LICENSE](https://github.com/Plamedi-Pindi/chatbot/blob/master/LICENSE) para mais detalhes.
