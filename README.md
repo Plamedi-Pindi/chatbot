@@ -46,6 +46,8 @@ Este é o frontend de um chatbot desenvolvido com React.js, Vite, Tailwind CSS e
     ├── package.json     # Dependências e scripts do projeto
     ├── tailwind.config.js # Configuração do Tailwind CSS
     ├── tsconfig.json    # Configuração do TypeScript
+    ├── tsconfig.app.json    # Configuração do TypeScript
+    ├── tsconfig.node.json    # Configuração do TypeScript
     └── README.md        # Documentação do projeto
 
 
