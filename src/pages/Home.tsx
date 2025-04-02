@@ -20,7 +20,7 @@ export default function Home() {
     if (container && lastMessage) {
       lastMessage.scrollIntoView({ behavior: 'auto' });
 
-      const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 1000;
+      const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 100;
 
       if (isNearBottom) {
         lastMessage.scrollIntoView({ behavior: 'smooth' });
@@ -36,7 +36,7 @@ export default function Home() {
       <Header />
 
       {/* Main content start */}
-      <div ref={messagesContainerRef} className="flex flex-col-reverse h-screen min-h-0 p-4 overflow-y-auto  text-sm pt-[5rem] pb-[6rem] ">
+      <div ref={messagesContainerRef} className="flex flex-col-reverse h-screen min-h-0 p-4 overflow-y-auto  text-sm pt-[5rem] pb-[7rem] ">
         {reversedMessage.map((list) => (
           list.userID == 1 ? (
 
@@ -56,7 +56,7 @@ export default function Home() {
           ) : null
         ))}
 
-        <div ref={messagesEndRef} />
+        {/* <div ref={messagesEndRef} /> */}
       </div>
       {/* Main content end */}
 

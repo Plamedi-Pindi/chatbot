@@ -1,5 +1,5 @@
 // Icons
-import { BsX, BsPerson,  } from "react-icons/bs"
+import { BsX, BsPerson, BsGear } from "react-icons/bs"
 
 import botImage from "/bot.jpg";
 
@@ -20,7 +20,7 @@ export default function Header() {
                 {/*  */}
                 <button className="text-white flex items-center">
                     <BsPerson className="text-xl mr-2" />
-                    <BsX className="text-3xl" />
+                    <BsGear className="text-lg " />
                 </button>
             </div>
         </div>
