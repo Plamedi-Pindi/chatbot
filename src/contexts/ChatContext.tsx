@@ -2,8 +2,8 @@ import  { createContext, useContext, useState, ReactNode } from "react";
 
 interface ChatMessage {
     message: string,
-    id: number,
-    userID: number,
+    sender: 'user' | 'bot',
+    id: string
 }
 
 interface ChatProviderProps {
@@ -12,7 +12,7 @@ interface ChatProviderProps {
 
 interface CreateContextType {
     chatMessages: ChatMessage[],
-    addChatMessage: (text: string) => void
+    addChatMessage: (text: string, sender: 'user' | 'bot') => void
 }
 
 const ChatContext = createContext<CreateContextType>({} as CreateContextType);
@@ -20,11 +20,11 @@ const ChatContext = createContext<CreateContextType>({} as CreateContextType);
 export default function ChatProvider({ children }: ChatProviderProps) {
     const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
 
-    const addChatMessage = (text: string) => {
+    const addChatMessage = (text: string, sender: 'user' | 'bot') => {
         const newMassage: ChatMessage = {
             message: text,
-            id: Date.now(),
-            userID: 1
+            sender: sender,
+            id: `${sender}_${Date.now()}`
         }
         setChatMessages([...chatMessages, newMassage]);
     }

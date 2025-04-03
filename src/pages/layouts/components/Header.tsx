@@ -1,5 +1,5 @@
 // Icons
-import { BsX, BsPerson, BsGear } from "react-icons/bs"
+import {  BsPerson, BsGear } from "react-icons/bs"
 
 import botImage from "/bot.jpg";
 
