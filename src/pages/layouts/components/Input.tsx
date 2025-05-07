@@ -2,7 +2,7 @@
 import { FaPaperPlane } from "react-icons/fa6";
 
 // Hooks
-import React, { useState } from "react";
+import React, { ReactEventHandler, useState } from "react";
 import { useChat } from "../../../contexts/ChatContext";
 import { sendMessageToRasa } from "../../../apis/RasaService";
 // const [isSending, setIsSending] = useState(false);
@@ -41,15 +41,16 @@ export default function Input() {
         ? response
         : response?.responses || [];
 
-      botResponses.forEach((botMessage: { text?: string }) => {
-        if (botMessage.text) {
-          addChatMessage(botMessage.text, 'bot');
+      botResponses.forEach((botMessage: { text?: string, custom?: { message?: string } }) => {
+        const message = botMessage.custom?.message || botMessage.text;
+        if (message) {
+          addChatMessage(message, 'bot');
         }
       });
     } catch (error) {
       addChatMessage("Desculpe, ocorreu um erro ao processar sua mensagem.", 'bot');
       console.log(error);
-    }finally{
+    } finally {
       setIsSending(false);
     }
   }
@@ -60,10 +61,23 @@ export default function Input() {
     }
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      // e.preventDefault();
+      handleSubmit(e);
+    }
+  }
+
   return (
-    <div className="fixed -bottom-2 w-full bg-white">
-      <form onSubmit={handleSubmit} className="bg-neutral-100 w-[90%] h-20 m-auto mb-6 block rounded-lg flex items-center">
-        <textarea onChange={handleChangeInput} value={inputMessage} onKeyDown={(e) => e.key === 'Enter' && handleSubmit} placeholder="Pergunte Algumas coisa..." className=" h-full w-[85%] bg-neutral-100 outline-none rounded-l-lg p-2 text-zinc-800 text-sm overflow-auto scrollbar-hide"></textarea>
+    <div className="fixed left-0 -bottom-2 w-full bg-white m-auto sm:w-[90] ">
+      <form onSubmit={handleSubmit} className="bg-neutral-100 w-[90%] lg:w-[50rem] m-auto h-20 m-auto mb-6 block  rounded-lg flex justify-around items-center ">
+        <textarea
+          onChange={handleChangeInput}
+          value={inputMessage}
+          onKeyDown={handleKeyDown}
+          placeholder="Pergunte Algumas coisa..."
+          className=" h-full w-[85%] lg:w-[%] bg-neutral-100 outline-none rounded-l-lg p-2 text-zinc-800 text-sm overflow-auto scrollbar-hide block">
+        </textarea>
 
         <button onClick={sendMessage} type="submit" className={`outline-none w-8 h-8 rounded-full flex items-center ${inputState ? "bg-zinc-500 " : "bg-zinc-900 "}`} >
           <FaPaperPlane className="text-md text-zinc-200 ml-1.5" />

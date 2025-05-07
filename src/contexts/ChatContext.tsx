@@ -26,7 +26,7 @@ export default function ChatProvider({ children }: ChatProviderProps) {
             sender: sender,
             id: `${sender}_${Date.now()}`
         }
-        setChatMessages([...chatMessages, newMassage]);
+        setChatMessages(prev => [...prev, newMassage]);
     }
     return (
         <div>
@@ -45,3 +45,4 @@ export function useChat() {
     }
     return context;
 }
+ 

@@ -5,8 +5,8 @@ import botImage from "/bot.jpg";
 
 export default function Header() {
     return (
-        <div className="bg-black w-full h-16 fixed">
-            <div className=" flex flex-raw justify-between items-center h-full w-full pl-3 pr-3">
+        <div className="bg-black w-full h-16 fixed left-0 top-0">
+            <div className=" flex flex-raw justify-between items-center h-full w-full pl-3 pr-3 m-auto sm:w-[90%] lg: ">
                 {/*  */}
                 <div className="flex text-white items-center">
                     {/* Bot image */}
